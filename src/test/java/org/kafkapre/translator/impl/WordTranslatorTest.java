@@ -27,6 +27,20 @@ public class WordTranslatorTest {
     }
 
     @Test
+    public void anyRuleDoesNotFitTest() {
+        final Map<String, String> data = new HashMap<>();
+        data.put("_Beach", "_Beach");
+        data.put("$MccloUd", "$MccloUd");
+        data.put("]can’t", "]can’t");
+        data.put("(end.", "(end.");
+
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
+    }
+
+    @Test
     public void simpleConsonantTest() {
         final String expected = "ohnjay";
         String actual = t.translateWord("john");
