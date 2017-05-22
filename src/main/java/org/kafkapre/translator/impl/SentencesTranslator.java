@@ -11,8 +11,8 @@ public class SentencesTranslator {
         this.wordTranslator = wordTranslator;
     }
 
-    public String translate(String sentences) {
-        String[] words = sentences.split("\\s+");
+    public String translate(String text) {
+        String[] words = text.split("\\s+");
 
         for (int i = 0; i < words.length; i++) {
             words[i]= wordTranslator.translateWord(words[i]);

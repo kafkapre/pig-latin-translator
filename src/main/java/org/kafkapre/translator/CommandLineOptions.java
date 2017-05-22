@@ -13,8 +13,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
-
 public class CommandLineOptions {
 
     public static final char[] DEFAULT_PUNCTUATION = new char[]{'.', '?', '!', ',', ':', ';', '"', '”', '“', '„', '`', '’', '\''};
