@@ -7,11 +7,17 @@ Translation preserves relative punctuation position.
 As punctuation characters are considered [.?!,:;"”“„`’'] defaultly. In case, that you want to use own specific punctuation characters then use parameter -p.
 
 ### Prerequisites
- >- Maven 3 
+ >- Maven
  >- Java 8 (Jdk)
+ >- Git
 
-Tested on Ubuntu 64bit, OpenJdk 1.8, Maven 3.3.9.
+Tested on Ubuntu 64bit, OpenJdk 1.8, Maven 3.3.9., Git 1.9.1
 
+#### Download project
+
+```
+git clone https://github.com/kafkapre/pig-latin-translator.git
+```
 
 #### How to build
 
