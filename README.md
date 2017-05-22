@@ -33,7 +33,7 @@ For example:
 java -jar translator-1.0.jar -t "Hello anna-frankway."
 ```
 
-Will return "Ellohay annaway-frankway."
+Will print: "Ellohay annaway-frankway."
 
 ### Supported application's arguments
 ```
@@ -55,15 +55,15 @@ Will return "Ellohay annaway-frankway."
 ```
 
 ### Features
- >- Text for translation can be pass as application argument or via file
- >- Output file can be created
- >- Own punctuation characters can be set by argument
+ >- Text for translation can be pass as application argument or via file.
+ >- Output file can be created.
+ >- Own punctuation characters can be set by argument.
  
 ### Notes
  >- Only english vowels are considered.
  >- Only english consonants are considered.
  >- Punctuation in word itself (eg. "can't") is considered as word's character and then Capitalization Rule is also applied on those chars (eg. "end.E" -> "endeWa.y"). 
-    Punctuation chars are treated as lower case chars and cannot be transfer to upper case (eg. "b'bBbB" ->"bbb'bBay")
- >- Punctuation at word begin does not effect translation (eg. ".Hello" -> ".Ellohay")
- >- All White spaces between words are replaced by one space. (eg. ".Hello   a" -> ".Ellohay away")
- >- Words with first char which is: non-letter, non-punctuation or a number are not translated (eg. "1Hello" -> "1Hello" or "$Hello" -> "$Hello")
+    Punctuation chars are treated as lower case chars and cannot be transfer to upper case (eg. "b'bBbB" ->"bbb'bBay").
+ >- Punctuation at word begin does not effect translation (eg. ".Hello" -> ".Ellohay").
+ >- All White spaces between words are replaced by one space. (eg. ".Hello   a" -> ".Ellohay away").
+ >- Words with first char which is: non-letter, non-punctuation or a number are not translated (eg. "1Hello" -> "1Hello" or "$Hello" -> "$Hello").
