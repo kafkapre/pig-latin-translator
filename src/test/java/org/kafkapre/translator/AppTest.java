@@ -89,16 +89,16 @@ public class AppTest {
 
     @Test
     public void runAppWitchChangedPunctuationTest() throws Exception {
-        String input = "Hello.";
-        String expected = "Ello.hay";
+        String input = "Hell.o";
+        String expected = "Ell.ohay";
         String actual = app.runApp(new String[]{"--text", input, punctuationArg("_")});
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     public void runAppWitchChangedPunctuationCorrectlyTest() throws Exception {
-        String input = "Hello.";
-        String expected = "Ellohay.";
+        String input = "Hell.o";
+        String expected = "Elloha.y";
         String actual = app.runApp(new String[]{"--text", input, punctuationArg(".")});
         assertThat(actual).isEqualTo(expected);
     }

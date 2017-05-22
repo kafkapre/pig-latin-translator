@@ -48,6 +48,21 @@ public class WordTranslatorTest {
     }
 
     @Test
+    public void complexConsonantTest() {
+        final Map<String, String> data = new HashMap<>();
+        data.put(",naNa", ",anAnay");
+        data.put("nANa", "aNAnay");
+        data.put("NAna", "ANanay");
+        data.put("N", "Nay");
+        data.put("", "");
+
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
+    }
+
+    @Test
     public void simpleVowelTest() {
         final String expected = "ireneway";
         String actual = t.translateWord("irene");
@@ -55,10 +70,83 @@ public class WordTranslatorTest {
     }
 
     @Test
+    public void complexVovelTest() {
+        final Map<String, String> data = new HashMap<>();
+        data.put("aNa", "aNaway");
+        data.put("Ana", "Anaway");
+        data.put("ANA", "ANAway");
+        data.put("ANa", "ANaway");
+        data.put("A", "Away");
+        data.put("", "");
+
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
+    }
+
+    @Test
     public void skipWordTest() {
-        final String expected = "stairway";
-        String actual = t.translateWord("stairway");
-        assertThat(actual).isEqualTo(expected);
+        final Map<String, String> data = new HashMap<>();
+        data.put("stairway", "stairway");
+        data.put("stairway.", "stairway.");
+        data.put("stairway..", "stairway..");
+        data.put("stairway,", "stairway,");
+        data.put("stairway,,", "stairway,,");
+        data.put("stairway.,", "stairway.,");
+        data.put("stairway'.,", "stairway'.,");
+
+
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
+    }
+
+    @Test
+    public void punctuationAtWordBeginTest() {
+        final Map<String, String> data = new HashMap<>();
+        data.put(".ana", ".anaway");
+        data.put("..ana", "..anaway");
+        data.put(",ana", ",anaway");
+        data.put(",,ana", ",,anaway");
+
+        data.put(".Ana", ".Anaway");
+        data.put("..anA", "..anAway");
+        data.put(",aNa", ",aNaway");
+        data.put(",,ANa", ",,ANaway");
+
+        data.put(".nana", ".ananay");
+        data.put("..nana", "..ananay");
+        data.put(",nana", ",ananay");
+        data.put(",,nana", ",,ananay");
+
+        data.put(".Nana", ".Ananay");
+        data.put("..nAna", "..aNanay");
+        data.put(",naNa", ",anAnay");
+        data.put(",,NAna", ",,ANanay");
+
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
+    }
+
+    @Test
+    public void edgeCasesTest() {
+        final Map<String, String> data = new HashMap<>();
+        data.put(".a.", ".away.");
+        data.put(".A.", ".Away.");
+        data.put("N", "Nay");
+        data.put(".N.", ".Nay.");
+        data.put(".NA...", ".ANay...");
+        data.put("....", "....");
+        data.put("..NANANA..", "..ANANANay..");
+
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
     }
 
     @Test
@@ -103,7 +191,7 @@ public class WordTranslatorTest {
     }
 
     @Test
-    public void punctuationTest() {
+    public void punctuationSimpleTest() {
         final Map<String, String> data = new HashMap<>();
         data.put("can’t", "antca’y");
         data.put("end.", "endway.");
@@ -114,5 +202,24 @@ public class WordTranslatorTest {
         });
     }
 
+    @Test
+    public void punctuationComplexTest() {
+        final Map<String, String> data = new HashMap<>();
+        data.put("can’T", "antcA’y");
+        data.put("end.E", "endeWa.y");
+        data.put("E.E.", "EeWa.y.");
+        data.put("e.E.", "eeWa.y.");
+        data.put("Ce.E.", "EecA.y.");
+        data.put("..Ce.E.", "..EecA.y.");
+        data.put(":e.E.", ":eeWa.y.");
+        data.put("b'bBbB", "bbb'bBay");
+        data.put(".b'bBbB.", ".bbb'bBay.");
+        data.put("b'bBbB.", "bbb'bBay.");
+        data.put(":b'bBbB;.", ":bbb'bBay;.");
 
+        data.forEach((input, expected) -> {
+            String actual = t.translateWord(input);
+            assertThat(actual).isEqualTo(expected);
+        });
+    }
 }
