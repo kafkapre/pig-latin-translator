@@ -20,6 +20,7 @@ git clone https://github.com/kafkapre/pig-latin-translator.git
 ```
 
 #### How to build
+Go to project's directory and run command:
 
 ```
 mvn package -DskipTests
@@ -33,7 +34,7 @@ mvn test
 
 #### How to run application
 
-For example:
+For example go to project's "target" directory and run command:
 
 ```
 java -jar translator-1.0.jar -t "Hello anna-frankway."
